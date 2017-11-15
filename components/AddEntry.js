@@ -10,7 +10,9 @@ import { Ionicons } from "@expo/vector-icons";
 import {
   getMetricMetaInfo,
   timeToString,
-  getdailyReminderValue
+  getdailyReminderValue,
+  clearLocalNotification,
+  setLocalNotification
 } from "../utils/helpers";
 import UdaciSlider from "./UdaciSlider";
 import UdaciSteppers from "./UdaciSteppers";
@@ -100,7 +102,8 @@ class AddEntry extends Component {
     //navigate to home
     submitEntry({ key, entry });
 
-    // clear local notification
+    // clear local notification and set new notification
+    clearLocalNotification().then(setLocalNotification);
   };
   //reset function
   reset = () => {
